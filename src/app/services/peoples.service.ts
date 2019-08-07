@@ -13,27 +13,54 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 export class PeoplesService {
 
   public peopleCollection: AngularFirestoreCollection<People>;
-  public people: Observable<Array<People>>;
+//  public people: Observable<Array<People>>;
+  public people: People;
   public peopleDoc: AngularFirestoreDocument<People>;
+  
 
-  constructor(public afs: AngularFirestore) {
-    // this.people = afs.collection('people').valueChanges();
-    this.peopleCollection = afs.collection<People>('people');
-    this.people = this.peopleCollection.snapshotChanges().pipe(
-      map(actions => actions.map( a => {
-        const data = a.payload.doc.data() as People;
-        const id = a.payload.doc.id;
-        return {id, ...data };
-      }))
+  constructor(public db: AngularFirestore) { }
+
+  getPeoples(): Observable<Array<People>> {
+    return this.db.collection<People>('Peoples')
+      .snapshotChanges().pipe(
+        map(actions => actions.map(a => {
+          const data = a.payload.doc.data() as People;
+          data.id = a.payload.doc.id;
+          return data;
+        }))
+      );
+  }
+
+  getPeopleById(id: string): Observable<People> {
+    this.peopleDoc = this.db.doc<People>(`Peoples/${id}`);
+    return this.peopleDoc.snapshotChanges().pipe(
+      map(a => {
+        const data = a.payload.data() as People;
+        data.id = a.payload.id;
+        return data;
+      })
     );
   }
 
-  getPeoples() {
-    return this.people;
+  deletePeople(id: string): Promise<void> {
+    return this.db
+      .collection('Peoples')
+      .doc(id)
+      .delete();
   }
 
   addPeople(people: People) {
-    this.peopleCollection.add(people);
+    people.nuevo = false;
+    return this.db
+      .collection("Peoples")
+      .add(people);
+  }
+
+  updtaePeople(people: People): Promise<void> {
+    return this.db
+      .collection('Peoples')
+      .doc(people.id)
+      .set(people);
   }
 
 }

@@ -1,14 +1,15 @@
-<div *ngFor="let p of people">
-    <h1>{{p.name}}</h1>
+ <div>  
+    <h1>{{peoplesService.people.name}}</h1>
     <hr>
     <div class="">
         <div class="card animated fadeIn fast">
-            <img class="card-img-top" src="{{p.img}}" alt="Card image cap">
             <div class="card-body">
-                <p class="card-text">{{p.biography}}</p>
-                <p class="card-text"><small class="text-muted">{{p.heroe}}</small></p>
-
+                <p class="card-text">{{peoplesService.people.biography}}</p>
+                <p class="card-text"><small class="text-muted">{{peoplesService.people.heroe}}</small></p>
             </div>
         </div>
     </div>
-</div>
+</div> 
+
+
+

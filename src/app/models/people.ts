@@ -4,7 +4,8 @@ export class People {
       public id?: string,
       public name?: string,
       public biography?: string,
-      public heroe?: string
+      public heroe?: string,
+      public nuevo?: boolean
     ) {  }
 
 }

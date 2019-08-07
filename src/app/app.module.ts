@@ -37,7 +37,7 @@ import { environment } from '../environments/environment';
     BrowserModule,
     app_routing,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, 'peopleInformation'),
+    AngularFireModule.initializeApp(environment.firebase),
  	  AngularFirestoreModule
   ],
   providers: [

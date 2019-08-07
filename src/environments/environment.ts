@@ -4,14 +4,14 @@
 
 export const environment = {
   production: false,
-  firebaseConfig: {
-    apiKey: 'AIzaSyAbQ7Ev4pt-hbULm0jA0mFYxY51K4LzFvg',
-    authDomain: 'peopleinformation-efb14.firebaseapp.com',
-    databaseURL: 'https://peopleinformation-efb14.firebaseio.com',
-    projectId: 'peopleinformation-efb14',
-    storageBucket: 'peopleinformation-efb14.appspot.com',
-    messagingSenderId: '272525615827',
-    appId: '1:272525615827:web:96c737d8a9e8b0c6'
+  firebase : {
+    apiKey: "AIzaSyDMFI_WqEgbJBZZoHPgnIa9CPcfbZKHivc",
+    authDomain: "angular-firestore-9949f.firebaseapp.com",
+    databaseURL: "https://angular-firestore-9949f.firebaseio.com",
+    projectId: "angular-firestore-9949f",
+    storageBucket: "angular-firestore-9949f.appspot.com",
+    messagingSenderId: "516160275428",
+    appId: "1:516160275428:web:4d360d3c90a2b613"
   }
 };
 

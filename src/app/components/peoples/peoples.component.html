@@ -1,15 +1,22 @@
 <div>
     <h1>Actores de Marvel</h1>
-    <input class="form-control mr-sm-2 searchInput" style="border-radius: 10px" [(ngModel)]="searchText" placeholder="Buscar">
+    <div class="row col-md-12">
+     <a [routerLink]="['/addPeople']" class="btn btn-info col-md-3" >Agregar Persona</a>
+     <input class="form-control col-md-9 searchInput" style="border-radius: 10px" [(ngModel)]="searchText" placeholder="Buscar">
+    </div>
 </div>
 <hr>
+
+
 <div class="card-columns">
     <div class="card animated fadeIn fast" *ngFor="let people of peoples | search : searchText; let i = index">
         <div class="card-body">
             <h5 class="card-title">{{people.name}}</h5>
             <p class="card-text">{{people.biography}}</p>
             <p class="card-text"><small class="text-muted">{{people.heroe}}</small></p>
-            <a [routerLink]="['/people', people.code]" class="btn btn-primary">Ver más..</a>
+            <a [routerLink]="['/people/', people.id]" class="btn btn-primary">Ver más..</a>&nbsp;
+            <button type="button" (click)="editarPeople(people.id)" class="btn btn-success">Editar</button>&nbsp;
+            <button type="button" (click)="eliminarPeople(people.id)" class="btn btn-danger">Eliminar</button>
         </div>
     </div>
 </div>
